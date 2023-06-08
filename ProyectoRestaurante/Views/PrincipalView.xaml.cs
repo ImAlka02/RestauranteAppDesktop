@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProyectoRestaurante
+namespace ProyectoRestaurante.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Lógica de interacción para PrincipalView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class PrincipalView : Window
     {
-        public MainWindow()
+        public PrincipalView()
         {
             InitializeComponent();
         }
