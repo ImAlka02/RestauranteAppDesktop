@@ -3,10 +3,52 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ProyectoRestaurante.Views"
+        xmlns:local="clr-namespace:ProyectoRestaurante.Views" xmlns:vm="clr-namespace:ProyectoRestaurante.ViewModels" xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
-        Title="PrincipalView" Height="450" Width="800">
-    <Grid>
+        Title="PrincipalView" Height="550" Width="800">
+    <Window.DataContext>
+        <vm:MainViewModel></vm:MainViewModel>
+    </Window.DataContext>
+    <DockPanel>
+        <Border DockPanel.Dock="Top" BorderThickness="0,0,0,2" BorderBrush="#efa42b">
+            <WrapPanel Margin="0,0,0,5" >
+                <fa:IconImage Icon="Utensils" Height="20" Width="20" Foreground="#efa42b"></fa:IconImage>
+                <TextBlock VerticalAlignment="center" FontFamily="/Assets/Marmelad-Regular.ttf #Marmelad" FontSize="20">El buen gusto</TextBlock>
+            </WrapPanel>
+        </Border>
         
-    </Grid>
+        <DockPanel Margin="-1"
+                   DockPanel.Dock="Top" 
+                   Background="Maroon">
+            <DockPanel.Style>
+                <Style TargetType="DockPanel">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding EstaConectado}" 
+                                     Value="False">
+                            <Setter Property="Visibility"
+                                    Value="Collapsed">
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DockPanel.Style>
+            <TextBlock  Padding="3" 
+                        DockPanel.Dock="Right" 
+                         FontSize="15" 
+                        Foreground="Yellow">(
+                         <Hyperlink 
+                             Command="{Binding CerrarSesionCommand}" 
+                             Foreground="Yellow">Cerrar sesión
+                         </Hyperlink>
+                        )
+            </TextBlock>
+            <TextBlock Padding="3"
+                       HorizontalAlignment="Right" 
+                       FontSize="15" 
+                       Foreground="White" 
+                       Text="{Binding Usuario.Nombre}">
+            </TextBlock>
+        </DockPanel>
+        <ContentControl  Content="{Binding Vista}" />
+    </DockPanel>
 </Window>

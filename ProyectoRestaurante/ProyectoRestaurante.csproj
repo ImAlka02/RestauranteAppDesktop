@@ -8,15 +8,27 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
+    <None Remove="Assets\ElBuenGustoLogo.png" />
+    <None Remove="Assets\Marmelad-Regular.ttf" />
+    <None Remove="Assets\Rubik-Italic-VariableFont_wght.ttf" />
+    <None Remove="Assets\Rubik-VariableFont_wght.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\ElBuenGustoLogo.png" />
+    <Resource Include="Assets\Marmelad-Regular.ttf" />
+    <Resource Include="Assets\Rubik-Italic-VariableFont_wght.ttf" />
+    <Resource Include="Assets\Rubik-VariableFont_wght.ttf" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FontAwesome.Sharp" Version="6.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="7.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
   </ItemGroup>
 

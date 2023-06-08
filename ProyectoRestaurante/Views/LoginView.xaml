@@ -6,7 +6,51 @@
              xmlns:local="clr-namespace:ProyectoRestaurante.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    
+    <StackPanel Margin="30">
+        <TextBlock Margin="0,0,0,20" FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light"
+                   FontSize="40"
+                   HorizontalAlignment="Center">Iniciar sesión</TextBlock>
+        <StackPanel Margin="200,0">
+            <Label >Correo electrónico:</Label>
+            <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Margin="0,0,0,10">
+                <TextBox BorderThickness="0" Height="20"></TextBox>
+            </Border>
+
+            <Label>Contraseña:</Label>
+
+            <TextBox Visibility="Collapsed"
+                 Name="txtPassword" 
+                 Text="{Binding Usuario.Contrasena, UpdateSourceTrigger=PropertyChanged}" >
+            </TextBox>
+                
             
-    </Grid>
+            <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Margin="0,0,0,10">
+                <PasswordBox  Height="25" BorderThickness="0">
+                    <!--Name="pwb1"  
+                     LostFocus="pwb1_LostFocus"-->
+                </PasswordBox>
+            </Border>
+        </StackPanel>
+
+
+
+
+        <TextBlock Margin="10"
+                   Text="{Binding Error}"
+                   Foreground="Red" 
+                   HorizontalAlignment="Center">
+        </TextBlock>
+        <StackPanel Margin="0">
+
+            <Button Command="{Binding IniciarSesionCommand}"  FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light" Background="#efa42b" BorderThickness="0" Foreground="White" FontSize="15" Content="Iniciar Sesión" HorizontalAlignment="Center" Width="200" Height="30" >
+            </Button>
+
+            <Label FontSize="15" FontWeight="SemiBold" Foreground="gray" HorizontalAlignment="Center">O</Label>
+
+            <Button Content="Registrarse" Command="{Binding VerRegistrarCommand}" FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light" FontSize="12" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Width="100"  >
+            </Button>
+        </StackPanel>
+
+    </StackPanel>
 </UserControl>
