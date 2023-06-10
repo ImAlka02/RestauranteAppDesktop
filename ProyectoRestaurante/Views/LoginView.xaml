@@ -12,7 +12,9 @@
                    FontSize="40"
                    HorizontalAlignment="Center">El buen gusto</TextBlock>
 
-
+        <Border>
+            
+        </Border>
         <StackPanel Margin="200,0">
             <Label >Correo electrónico:</Label>
             <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Margin="0,0,0,10">
@@ -35,9 +37,6 @@
             </Border>
         </StackPanel>
 
-
-
-
         <TextBlock Margin="10"
                    Text="{Binding Error}"
                    Foreground="Red" 
@@ -48,7 +47,7 @@
             <Button Command="{Binding IniciarSesionCommand}"  FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light" Background="#efa42b" BorderThickness="0" Foreground="White" FontSize="15" Content="Iniciar Sesión" HorizontalAlignment="Center" Width="200" Height="30" >
             </Button>
 
-            <Label FontSize="15" FontWeight="SemiBold" Foreground="gray" HorizontalAlignment="Center">O</Label>
+            <Label FontSize="12" FontWeight="SemiBold" Foreground="gray" HorizontalAlignment="Center">O</Label>
 
             <Button Content="Registrarse" Command="{Binding VerRegistrarCommand}" FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light" FontSize="12" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Width="100"  >
             </Button>

@@ -6,7 +6,20 @@
              xmlns:local="clr-namespace:ProyectoRestaurante.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+    <StackPanel>
+        <Label >Nombre:</Label>
+        <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Margin="0,0,0,10">
+            <TextBox BorderThickness="0" Height="20"></TextBox>
+        </Border>
+
+        <Label >Correo electrónico:</Label>
+        <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Margin="0,0,0,10">
+            <TextBox BorderThickness="0" Height="20"></TextBox>
+        </Border>
+
+        <Label >Contraseña:</Label>
+        <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Margin="0,0,0,10">
+            <TextBox BorderThickness="0" Height="20"></TextBox>
+        </Border>
+    </StackPanel>
 </UserControl>
