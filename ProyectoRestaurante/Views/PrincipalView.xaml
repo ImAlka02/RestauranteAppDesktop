@@ -10,14 +10,24 @@
         <vm:MainViewModel></vm:MainViewModel>
     </Window.DataContext>
     <DockPanel>
-        <Border DockPanel.Dock="Top" BorderThickness="0,0,0,2" BorderBrush="#efa42b">
-          
+        <Border x:Name="BrdNav" DockPanel.Dock="Top" BorderThickness="0,0,0,2" BorderBrush="#efa42b">
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding EstaConectado}" Value="true">
+                            <Setter Property="Visibility"
+                                    Value="Collapsed">
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
                 <fa:IconImage Icon="Utensils" Height="40" Width="40" Margin="2" Foreground="#efa42b" VerticalAlignment="Center" HorizontalAlignment="Center"></fa:IconImage>
            
         </Border>
         
         <DockPanel Margin="-1"
-                   DockPanel.Dock="Top" 
+                   DockPanel.Dock="Left" 
                    Background="Maroon">
             <DockPanel.Style>
                 <Style TargetType="DockPanel">
@@ -48,6 +58,9 @@
                        Text="{Binding Usuario.Nombre}">
             </TextBlock>
         </DockPanel>
+        
+        
         <ContentControl  Content="{Binding Vista}" />
+        
     </DockPanel>
 </Window>

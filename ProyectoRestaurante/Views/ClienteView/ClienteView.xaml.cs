@@ -13,22 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProyectoRestaurante.Views
+namespace ProyectoRestaurante.Views.ClienteView
 {
     /// <summary>
-    /// Lógica de interacción para LoginView.xaml
+    /// Lógica de interacción para ClienteView.xaml
     /// </summary>
-    public partial class LoginView : UserControl
+    public partial class ClienteView : UserControl
     {
-        public LoginView()
+        public ClienteView()
         {
             InitializeComponent();
-        }
-
-        private void pwb1_LostFocus(object sender, RoutedEventArgs e)
-        {
-            txtPassword.Text = "";
-            txtPassword.Text = pwb1.Password;
         }
     }
 }

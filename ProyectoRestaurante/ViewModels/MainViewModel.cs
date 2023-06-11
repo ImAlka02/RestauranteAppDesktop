@@ -14,6 +14,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
+using ProyectoRestaurante.Views.ClienteView;
 
 namespace ProyectoRestaurante.ViewModels
 {
@@ -40,7 +41,7 @@ namespace ProyectoRestaurante.ViewModels
         public MainViewModel()
         {
             CerrarSesionCommand = new RelayCommand(CerrarSesion);
-            //IniciarSesionCommand = new RelayCommand(IniciarSesion);
+            IniciarSesionCommand = new RelayCommand(IniciarSesion);
             RegistarCommand = new RelayCommand(Registrar);
             VerRegistrarCommand = new RelayCommand(VerRegistar);
             VolverCommand = new RelayCommand(Volver);
@@ -85,50 +86,46 @@ namespace ProyectoRestaurante.ViewModels
             Error = "";
             Actualizar();
         }
+        private void IniciarSesion()
+        {
+            if (Usuario != null)
+            {
+                var inicio = catalogoUs.spIniciarSesion(Usuario.Correo, Usuario.Contrasena);
 
-        //private void IniciarSesion()
-        //{
-
-        //    //Validar que las cajas de texto tengas datos
-        //    //Correo sea valido con expresiones regulares
-        //    if (Usuario != null)
-        //    {
-        //        var inicio = catalagoUs.spIniciarSesion(Usuario.Correo, Usuario.Contrasena);
-
-        //        if (inicio == 1)
-        //        {
-        //            // Existe el usuario, ahora lo buscamos en la bd para establecer que el es el conectado
-        //            var usconectado = catalagoUs.GetUsuario(Usuario.Correo);
-        //            Usuario = usconectado;
-        //            if (Thread.CurrentPrincipal != null)
-        //            {
-        //                if (Thread.CurrentPrincipal.IsInRole("Administrador"))
-        //                    AccionesUsuarioAdministrador();
-        //                if (Thread.CurrentPrincipal.IsInRole("Capturista"))
-        //                    AccionesUsuarioCapturista();
-        //            }
+                if (inicio == 1)
+                {
+                    // Existe el usuario, ahora lo buscamos en la bd para establecer que el es el conectado
+                    var usconectado = catalogoUs.GetUsuario(Usuario.Correo);
+                    Usuario = usconectado;
+                    if (Thread.CurrentPrincipal != null)
+                    {
+                        if (Thread.CurrentPrincipal.IsInRole("Administrador"))
+                            AccionesUsuarioAdministrador();
+                        if (Thread.CurrentPrincipal.IsInRole("Cliente"))
+                            AccionesUsuarioCliente();
+                    }
 
 
-        //        }
-        //        else if (inicio == 2)
-        //        {
-        //            Error = "Usuario no encontado";
+                }
+                else if (inicio == 2)
+                {
+                    Error = "Usuario no encontado";
 
-        //        }
-        //        else
-        //        {
-        //            Error = "contrasena incorrecta";
+                }
+                else
+                {
+                    Error = "contrasena incorrecta";
 
-        //        }
-        //        Actualizar();
-        //    }
-        //}
+                }
+                Actualizar();
+            }
+        }
 
 
         [Authorize(Roles = "Cliente")]
-        private void AccionesUsuarioCapturista()
+        private void AccionesUsuarioCliente()
         {
-            //Vista = new BienvenidoView();
+            Vista = new ClienteView();
         }
 
         [Authorize(Roles = "Administrador")]
