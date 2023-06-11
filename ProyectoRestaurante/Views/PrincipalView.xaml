@@ -26,10 +26,10 @@
            
         </Border>
         
-        <DockPanel Margin="-1"
+        <StackPanel Width="40"
                    DockPanel.Dock="Left" 
-                   Background="Maroon">
-            <DockPanel.Style>
+                   Background="White">
+            <!--<DockPanel.Style>
                 <Style TargetType="DockPanel">
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding EstaConectado}" 
@@ -40,24 +40,12 @@
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </DockPanel.Style>
-            <TextBlock  Padding="3" 
-                        DockPanel.Dock="Right" 
-                         FontSize="15" 
-                        Foreground="Yellow">(
-                         <Hyperlink 
-                             Command="{Binding CerrarSesionCommand}" 
-                             Foreground="Yellow">Cerrar sesión
-                         </Hyperlink>
-                        )
-            </TextBlock>
-            <TextBlock Padding="3"
-                       HorizontalAlignment="Right" 
-                       FontSize="15" 
-                       Foreground="White" 
-                       Text="{Binding Usuario.Nombre}">
-            </TextBlock>
-        </DockPanel>
+            </DockPanel.Style>-->
+            <Button Background="Transparent" Padding="0" BorderThickness="0">
+                <fa:IconImage Icon="Utensils" Width="20" Height="20" VerticalAlignment="Top"></fa:IconImage>
+            </Button>
+            
+        </StackPanel>
         
         
         <ContentControl  Content="{Binding Vista}" />
