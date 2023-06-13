@@ -61,14 +61,25 @@ namespace ProyectoRestaurante.ViewModels
         {
             if (Usuario != null)
             {
-                catalogoUs.Agregar(Usuario);
-                //EnviarCorreo(Usuario);
-                Volver();
-                Usuario = new();
-                Actualizar();
+                if (catalogoUs.Validar(Usuario, out List<string> errores))
+                {
+                    catalogoUs.Agregar(Usuario);
+                    //EnviarCorreo(Usuario);
+                    Volver();
+                    Usuario = new();
+                    Actualizar();
+                }
 
+                else
+                {
+                    foreach (var item in errores)
+                    {
+                        Error = $"{Error}{item}{Environment.NewLine}";
+                    }
+                    Actualizar();
+                }
             }
-
+              Error = "";
         }
         private void Volver()
         {

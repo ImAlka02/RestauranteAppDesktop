@@ -21,5 +21,9 @@
         <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Margin="0,0,0,10">
             <TextBox BorderThickness="0" Height="20"></TextBox>
         </Border>
+
+
+        <TextBlock Margin="10" Text="{Binding Error}" Foreground="Red" HorizontalAlignment="Center"></TextBlock>
+
     </StackPanel>
 </UserControl>
