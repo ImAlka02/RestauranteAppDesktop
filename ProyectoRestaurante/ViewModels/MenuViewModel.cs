@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using ProyectoRestaurante.Catalogos;
 using ProyectoRestaurante.Models;
+using ProyectoRestaurante.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,8 +16,17 @@ namespace ProyectoRestaurante.ViewModels
 {
     public class MenuViewModel : INotifyPropertyChanged
     {
+
+        private Accion operacion;
+
+        public Accion Operacion
+        {
+            get { return operacion; }
+            set { operacion = value; }
+        }
+
         MenuCatalogo catalogoMen = new MenuCatalogo();
-        public ObservableCollection<Menu> listamenus { get; set; } = new ObservableCollection<Menu>();
+        public ObservableCollection<Menu> ListaMenu { get; set; } = new ObservableCollection<Menu>();
         public Menu? Menu { get; set; }
         public string Error { get; set; }
         public ICommand VerRegistrarMenuCommand { get; set; }
@@ -27,13 +37,14 @@ namespace ProyectoRestaurante.ViewModels
         public ICommand EditarMenuCommand { get; set; }
         public MenuViewModel()
         {
+            operacion = Accion.VerMenu;
             VerRegistrarMenuCommand = new RelayCommand(VerRegistrarMenu);
             VerEliminarMenuCommand = new RelayCommand(VerEliminarMenu);
             VerEditarMenuCommand = new RelayCommand(VerEditarMenu);
             RegistrarMenuCommand = new RelayCommand(RegistrarMenu);
             EliminarMenuCommand = new RelayCommand(EliminarMenu);
             EditarMenuCommand = new RelayCommand(EditarMenu);
-        
+            ActualizarBD();
 
         }
 
@@ -67,10 +78,24 @@ namespace ProyectoRestaurante.ViewModels
             throw new NotImplementedException();
         }
 
+        private void ActualizarBD()
+        {
+            ListaMenu.Clear();
+            if(ListaMenu != null)
+            {
+                foreach (var item in catalogoMen.GetMenus())
+                {
+                    ListaMenu.Add(item);
+                }
+            }
+            
+        }
         void Actualizar(string? propiedad = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propiedad));
         }
+        
+
 
         public event PropertyChangedEventHandler? PropertyChanged;
     }
