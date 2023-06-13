@@ -28,6 +28,7 @@ namespace ProyectoRestaurante.ViewModels
         MenuCatalogo catalogoMen = new MenuCatalogo();
         public ObservableCollection<Menu> ListaMenu { get; set; } = new ObservableCollection<Menu>();
         public Menu? Menu { get; set; }
+        public Usuario Usuario { get; set; }
         public string Error { get; set; }
         public ICommand VerRegistrarMenuCommand { get; set; }
         public ICommand VerEliminarMenuCommand { get; set; }

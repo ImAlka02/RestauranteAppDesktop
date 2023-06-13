@@ -51,8 +51,8 @@
                     </Style.Triggers>
                 </Style>
             </StackPanel.Style>
-            <Button Background="Transparent" Padding="0" BorderThickness="0">
-                <fa:IconImage Icon="Utensils" Width="20" Height="20" VerticalAlignment="Top"></fa:IconImage>
+            <Button Background="Transparent" Padding="0" BorderThickness="0" Margin="0">
+                <fa:IconImage Icon="Utensils" Foreground="#efa42b" Width="30" Height="30" Margin="0,10" VerticalAlignment="Top"></fa:IconImage>
             </Button>
             
         </StackPanel>
