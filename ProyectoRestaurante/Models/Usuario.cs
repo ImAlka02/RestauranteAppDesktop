@@ -16,6 +16,4 @@ public partial class Usuario
     public int? IdRol { get; set; }
 
     public virtual Rol? IdRolNavigation { get; set; }
-
-    public virtual ICollection<Pedido> Pedido { get; set; } = new List<Pedido>();
 }
