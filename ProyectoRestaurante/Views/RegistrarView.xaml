@@ -48,8 +48,11 @@
 
         <TextBlock Margin="30,10" Text="{Binding Error}" Foreground="Red" HorizontalAlignment="Center" />
 
-        <Button Margin="30,20" Content="Registrarse" Background="#efa42b" Foreground="White" Width="150"
+        <Button Margin="20,5" Content="Registrarse" Background="#efa42b" Foreground="White" Width="150"
                 FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light" BorderThickness="0"/>
+        <Button Content="Cancelar" Command="{Binding VolverCommand}" FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light" 
+                FontSize="12" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Width="100">
+        </Button>
 
     </StackPanel>
 

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProyectoRestaurante.Views.AdminView
+namespace ProyectoRestaurante.Views.AdminViews
 {
     /// <summary>
-    /// Lógica de interacción para AdminView.xaml
+    /// Lógica de interacción para UsuariosView.xaml
     /// </summary>
-    public partial class AdminView : UserControl
+    public partial class UsuariosView : UserControl
     {
-        public AdminView()
+        public UsuariosView()
         {
             InitializeComponent();
         }
