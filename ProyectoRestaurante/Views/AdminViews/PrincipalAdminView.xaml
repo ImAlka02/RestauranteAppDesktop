@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="ProyectoRestaurante.Views.AdminViews.PrincipalAdminView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+             xmlns:local="clr-namespace:ProyectoRestaurante.Views.AdminViews"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="BorderThickness" Value="0,0,0,0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+        <Style TargetType="Border">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightBlue"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="#1f1f1f"/>
+        </Style>
+    </UserControl.Resources>
+    <DockPanel>
+        <Grid Width="40"
+                   DockPanel.Dock="Left" 
+                   Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Background="Transparent" Padding="0" BorderThickness="0" Margin="0" Command="{Binding NavegarMenuCommand}">
+                <fa:IconImage Icon="Utensils" Foreground="#efa42b" Width="30" Height="30" Margin="0,10" VerticalAlignment="Top"></fa:IconImage>
+            </Button>
+            <Button Background="Transparent" Padding="0" BorderThickness="0" Margin="0" VerticalAlignment="Bottom" Command="{Binding NavegarUsuariosCommand}">
+                <fa:IconImage Icon="Users" Foreground="#efa42b" Width="30" Height="30" Margin="0,10" VerticalAlignment="Bottom"></fa:IconImage>
+            </Button>
+        </Grid>
+
+    </DockPanel>
+</UserControl>

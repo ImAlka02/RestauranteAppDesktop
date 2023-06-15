@@ -6,11 +6,11 @@
              xmlns:local="clr-namespace:ProyectoRestaurante.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
-    <StackPanel Margin="30,5">
+
+    <StackPanel>
         <TextBlock Margin="0,0,0,20" FontFamily="/Assets/Marmelad-Regular.ttf #Marmelad"
                    FontSize="40"
-                   HorizontalAlignment="Center">El buen gusto</TextBlock>
+                   HorizontalAlignment="Center">El Buen Gusto</TextBlock>
 
         <Border>
             
@@ -52,6 +52,6 @@
             <Button Content="Registrarse" Command="{Binding VerRegistrarCommand}" FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light" FontSize="12" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Width="100"  >
             </Button>
         </StackPanel>
-
+        
     </StackPanel>
 </UserControl>

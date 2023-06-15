@@ -14,19 +14,11 @@ using System.Windows.Input;
 
 namespace ProyectoRestaurante.ViewModels
 {
-    public class MenuViewModel : INotifyPropertyChanged
+    public class MenuViewModel : INotifyPropertyChanged 
     {
-
-        private Accion operacion;
-
-        public Accion Operacion
-        {
-            get { return operacion; }
-            set { operacion = value; }
-        }
-
         MenuCatalogo catalogoMen = new MenuCatalogo();
         public ObservableCollection<Menu> ListaMenu { get; set; } = new ObservableCollection<Menu>();
+        public ObservableCollection<Usuario> UsuarioLista { get; set; }= new ObservableCollection<Usuario>();
         public Menu? Menu { get; set; }
         public Usuario Usuario { get; set; }
         public string Error { get; set; }
@@ -36,15 +28,17 @@ namespace ProyectoRestaurante.ViewModels
         public ICommand RegistrarMenuCommand { get; set; }
         public ICommand EliminarMenuCommand { get; set; }
         public ICommand EditarMenuCommand { get; set; }
+        
+        
         public MenuViewModel()
         {
-            operacion = Accion.VerMenu;
             VerRegistrarMenuCommand = new RelayCommand(VerRegistrarMenu);
             VerEliminarMenuCommand = new RelayCommand(VerEliminarMenu);
             VerEditarMenuCommand = new RelayCommand<Menu>(VerEditarMenu);
             RegistrarMenuCommand = new RelayCommand(RegistrarMenu);
             EliminarMenuCommand = new RelayCommand(EliminarMenu);
             EditarMenuCommand = new RelayCommand<Menu>(EditarMenu);
+          
             ActualizarBD();
 
         }

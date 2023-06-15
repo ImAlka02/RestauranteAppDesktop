@@ -11,14 +11,7 @@
     <Window.DataContext>
         <vm:MainViewModel></vm:MainViewModel>
     </Window.DataContext>
-    <Window.Resources>
-        <DataTemplate DataType="{x:Type vm:MenuViewModel}">
-            <local:IndexClienteView></local:IndexClienteView>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:MainViewModel}">
-            <local:LoginView></local:LoginView>
-        </DataTemplate>
-    </Window.Resources>
+    
     <DockPanel>
         <Border x:Name="BrdNav" DockPanel.Dock="Top" BorderThickness="0,0,0,2" BorderBrush="#efa42b">
             <Border.Style>
@@ -36,8 +29,8 @@
            
         </Border>
         
-        <Grid Width="40"
-                   DockPanel.Dock="Left" 
+        <Grid Height="50"
+                   DockPanel.Dock="Top" 
                    Background="White">
             <Grid.Style>
                 <Style TargetType="Grid">
@@ -51,22 +44,32 @@
                     </Style.Triggers>
                 </Style>
             </Grid.Style>
-            <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
-            <Button Background="Transparent" Padding="0" BorderThickness="0" Margin="0">
-                <fa:IconImage Icon="Utensils" Foreground="#efa42b" Width="30" Height="30" Margin="0,10" VerticalAlignment="Top"></fa:IconImage>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="8*"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Background="Transparent" Padding="0" BorderThickness="0" Margin="20,0" HorizontalAlignment="Left">
+                <fa:IconImage Icon="Utensils" Foreground="#efa42b" Width="40" Height="40"></fa:IconImage>
             </Button>
-            <Button Background="Transparent" Padding="0" BorderThickness="0" Margin="0" VerticalAlignment="Bottom">
-                <fa:IconImage Icon="RightFromBracket" Foreground="#efa42b" Width="30" Height="30" Margin="0,10" VerticalAlignment="Bottom"></fa:IconImage>
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Column="1">
+                <TextBlock >
+                    <Run Text="Bienvenido a " FontSize="20" FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light"/>
+                    <Run Text="El Buen Gusto " FontSize="20" Foreground="#efa42b" FontFamily="/Assets/Marmelad-Regular.ttf #Marmelad"/>
+                    <Run Text="{Binding Usuario.Nombre}" FontSize="20" FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light"/>
+                </TextBlock>
+                <TextBlock >
+                    <Run Text="Gracias por ser nuestro " FontSize="15" FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light"/>
+                    <Run Text="{Binding Usuario.IdRolNavigation.Nombre}" FontSize="15" Foreground="#efa42b"  FontFamily="/Assets/Marmelad-Regular.ttf #Marmelad"/>
+                </TextBlock>
+            </StackPanel>
+            <Button Grid.Column="2" Command="{Binding CerrarSesionCommand}" Background="Transparent" Padding="0" BorderThickness="0" Margin="0,0,20,0" VerticalAlignment="Bottom">
+                <fa:IconImage Icon="RightFromBracket" Foreground="#efa42b" Width="40" Height="40"></fa:IconImage>
             </Button>
         </Grid>
         
         
-        <ContentControl  Content="{Binding ViewModelActual}" />
+        <ContentControl  Content="{Binding Vista}"/>
         
     </DockPanel>
 </Window>
