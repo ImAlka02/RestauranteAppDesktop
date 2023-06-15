@@ -40,23 +40,21 @@ namespace ProyectoRestaurante.Catalogos
             context.SaveChanges();
             context.Entry(a).Reload();
         }
-        public bool Validar(Menu u, out List<string> errores)
+        public bool Validar(Menu m, out List<string> errores)
         {
             errores = new List<string>();
-            if (u != null)
+            if (m != null)
             {
-                if (string.IsNullOrWhiteSpace(u.Nombre))
-                    errores.Add("Necesita escribir el nombre");
-                else if (!Regex.IsMatch(u.Nombre, @"^[a-z A-ZñÑ]+$"))
-                    errores.Add("Escriba bien el nombre del usuario, no puede estar formado por carácteres especiales o números.");
-                //if (string.IsNullOrEmpty(u.Correo))
-                //    errores.Add("Escriba el correo electrónico");
-                //else if (!Regex.IsMatch(u.Correo, @"^[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}$"))
-                //    errores.Add("Escriba bien el correo electrónico.");
-                //if (string.IsNullOrEmpty(u.Contrasena))
-                //    errores.Add("Escriba la contraseña");
-                //if (context.Usuario.Any(x => x.Correo == u.Correo && x.Id != u.Id))
-                //    errores.Add("El correo electrónico ya ha sido registrado");
+                if (string.IsNullOrWhiteSpace(m.Nombre))
+                    errores.Add("Necesita escribir el nombre del platillo");
+                else if (!Regex.IsMatch(m.Nombre, @"^[a-z A-ZñÑ]+$"))
+                    errores.Add("Escriba bien el nombre del platillo, no puede estar formado por carácteres especiales o números.");
+                else if (m.Nombre.Length > 40)
+                    errores.Add("El nombre del platillo no puede exceder los 40 caracteres");
+                if (m.Precio <= 0)
+                    errores.Add("El precio debe ser mayor que cero");
+                if (string.IsNullOrWhiteSpace(m.Descripcion))
+                    errores.Add("Necesita escribir la descripción del platillo");
             }
             return errores.Count() == 0;
         }

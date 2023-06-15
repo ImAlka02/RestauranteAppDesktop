@@ -6,24 +6,51 @@
              xmlns:local="clr-namespace:ProyectoRestaurante.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <Label >Nombre:</Label>
-        <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Margin="0,0,0,10">
-            <TextBox BorderThickness="0" Height="20"></TextBox>
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="30" />
+        </Style>
+    </UserControl.Resources>
+
+    <StackPanel Background="#F4F4F4">
+        <Border Background="#efa42b" Padding="10">
+            <TextBlock Text="Registro de Usuario" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" />
         </Border>
 
-        <Label >Correo electrónico:</Label>
-        <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Margin="0,0,0,10">
-            <TextBox BorderThickness="0" Height="20"></TextBox>
-        </Border>
+        <StackPanel Margin="30,20">
+            <Label>Nombre:</Label>
+            <Border BorderThickness="0,0,0,2" BorderBrush="#efa42b">
+                <TextBox BorderThickness="0" Height="30" Text="{Binding Usuario.Nombre}"/>
+            </Border>
+        </StackPanel>
 
-        <Label >Contraseña:</Label>
-        <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Margin="0,0,0,10">
-            <TextBox BorderThickness="0" Height="20"></TextBox>
-        </Border>
+        <StackPanel Margin="30,10">
+            <Label>Correo electrónico:</Label>
+            <Border BorderThickness="0,0,0,2" BorderBrush="#efa42b">
+                <TextBox BorderThickness="0" Height="30" Text="{Binding Usuario.Correo}" />
+            </Border>
+        </StackPanel>
 
+        <StackPanel Margin="30,10">
+            <Label>Contraseña:</Label>
+            <Border BorderThickness="0,0,0,2" BorderBrush="#efa42b">
+                <TextBox BorderThickness="0" Height="30" Text="{Binding Usuario.Contrasena}" />
+            </Border>
+        </StackPanel>
 
-        <TextBlock Margin="10" Text="{Binding Error}" Foreground="Red" HorizontalAlignment="Center"></TextBlock>
+        <TextBlock Margin="30,10" Text="{Binding Error}" Foreground="Red" HorizontalAlignment="Center" />
+
+        <Button Margin="30,20" Content="Registrarse" Background="#efa42b" Foreground="White" Width="150"
+                FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light" BorderThickness="0"/>
 
     </StackPanel>
+
 </UserControl>
