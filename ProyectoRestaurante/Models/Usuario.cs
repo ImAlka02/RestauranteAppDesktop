@@ -13,7 +13,7 @@ public partial class Usuario
 
     public string Contrasena { get; set; } = null!;
 
-    public int? IdRol { get; set; }
+    public int IdRol { get; set; }
 
-    public virtual Rol? IdRolNavigation { get; set; }
+    public virtual Rol IdRolNavigation { get; set; } = null!;
 }
