@@ -16,6 +16,13 @@ namespace ProyectoRestaurante.ViewModels
 {
     public class MenuViewModel : INotifyPropertyChanged 
     {
+
+        private Accion operacion;
+        public Accion Operacion
+        {
+            get { return operacion; }
+            set { operacion = value; }
+        }
         MenuCatalogo catalogoMen = new MenuCatalogo();
         public ObservableCollection<Menu> ListaMenu { get; set; } = new ObservableCollection<Menu>();
         public ObservableCollection<Usuario> UsuarioLista { get; set; }= new ObservableCollection<Usuario>();

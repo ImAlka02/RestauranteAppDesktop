@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              xmlns:local="clr-namespace:ProyectoRestaurante.Views.AdminViews"
+             xmlns:viewMenu="clr-namespace:ProyectoRestaurante.Views.ClienteView"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -41,24 +42,44 @@
         <Style TargetType="Label">
             <Setter Property="Foreground" Value="#1f1f1f"/>
         </Style>
+
+
+        <viewMenu:MenuView x:Key="VerMenu"></viewMenu:MenuView>
     </UserControl.Resources>
     <DockPanel>
         <Grid Width="40"
+              Margin="20,0" x:Name="ButtonAdd"
                    DockPanel.Dock="Left" 
                    Background="White">
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <Button Background="Transparent" Padding="0" BorderThickness="0" Margin="0" Command="{Binding NavegarMenuCommand}">
+            <Button Background="Transparent" Grid.Row="0" Padding="0" BorderThickness="0" Margin="0" Command="{Binding NavegarMenuCommand}">
                 <fa:IconImage Icon="Utensils" Foreground="#efa42b" Width="30" Height="30" Margin="0,10" VerticalAlignment="Top"></fa:IconImage>
             </Button>
-            <Button Background="Transparent" Padding="0" BorderThickness="0" Margin="0" VerticalAlignment="Bottom" Command="{Binding NavegarUsuariosCommand}">
+            <Button Background="Transparent" Grid.Row="1" Padding="0" BorderThickness="0" Margin="0" VerticalAlignment="Bottom" Command="{Binding NavegarUsuariosCommand}">
                 <fa:IconImage Icon="Users" Foreground="#efa42b" Width="30" Height="30" Margin="0,10" VerticalAlignment="Bottom"></fa:IconImage>
             </Button>
+            <Button Background="Transparent"  Grid.Row="2" Padding="0" BorderThickness="0" Margin="0" VerticalAlignment="Bottom" Command="{Binding NavegarUsuariosCommand}">
+                <fa:IconImage  Icon="Add" Foreground="#efa42b" Width="30" Height="30" Margin="0,10" VerticalAlignment="Bottom"></fa:IconImage>
+            </Button>
+            
         </Grid>
-
+        <ContentControl x:Name="myContentControl" >
+            <ContentControl.Style>
+                <Style TargetType="ContentControl">
+                    <Setter Property="Content" Value="{StaticResource VerMenu}"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Content, ElementName=myContentControl}" Value="{StaticResource VerMenu}">
+                            <Setter  TargetName="" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+                
+            </ContentControl.Style>
+        </ContentControl>
     </DockPanel>
 </UserControl>
