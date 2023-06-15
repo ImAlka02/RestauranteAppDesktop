@@ -41,42 +41,73 @@ namespace ProyectoRestaurante.ViewModels
             operacion = Accion.VerMenu;
             VerRegistrarMenuCommand = new RelayCommand(VerRegistrarMenu);
             VerEliminarMenuCommand = new RelayCommand(VerEliminarMenu);
-            VerEditarMenuCommand = new RelayCommand(VerEditarMenu);
+            VerEditarMenuCommand = new RelayCommand<Menu>(VerEditarMenu);
             RegistrarMenuCommand = new RelayCommand(RegistrarMenu);
             EliminarMenuCommand = new RelayCommand(EliminarMenu);
-            EditarMenuCommand = new RelayCommand(EditarMenu);
+            EditarMenuCommand = new RelayCommand<Menu>(EditarMenu);
             ActualizarBD();
 
         }
 
-        private void EditarMenu()
+        private void EditarMenu(Menu m)
         {
             throw new NotImplementedException();
         }
 
         private void EliminarMenu()
         {
-            throw new NotImplementedException();
+            catalogoMen.Delete(Menu);
+            Actualizar();
         }
 
         private void RegistrarMenu()
         {
-            throw new NotImplementedException();
+            if (Menu != null)
+            {
+                if (catalogoMen.Validar(Menu, out List<string> errores))
+                {
+                    catalogoMen.Create(Menu);
+                    //EnviarCorreo(Usuario);
+                   
+                    Menu = new();
+                    Actualizar();
+                }
+
+                else
+                {
+                    foreach (var item in errores)
+                    {
+                        Error = $"{Error}{item}{Environment.NewLine}";
+                    }
+                    Actualizar();
+                }
+            }
+            Error = "";
+        
         }
 
-        private void VerEditarMenu()
+        private void VerEditarMenu(Menu m)
         {
-            throw new NotImplementedException();
+            if (Menu != null)
+            {
+
+            }
         }
 
         private void VerEliminarMenu()
         {
-            throw new NotImplementedException();
+            if (Menu != null)
+            {
+                //operacion = Accion.EliminarMenu;
+                Actualizar();
+            }
         }
 
         private void VerRegistrarMenu()
         {
-            throw new NotImplementedException();
+            Menu = new();
+            //operacion = Accion.RegistrarMenu;
+            Actualizar();
         }
 
         private void ActualizarBD()

@@ -12,6 +12,4 @@ public partial class Menu
     public decimal Precio { get; set; }
 
     public string Descripcion { get; set; } = null!;
-
-    public virtual ICollection<Detallespedido> Detallespedido { get; set; } = new List<Detallespedido>();
 }

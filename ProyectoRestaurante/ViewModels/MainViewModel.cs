@@ -24,7 +24,6 @@ namespace ProyectoRestaurante.ViewModels
         public bool EstaConectado => Usuario.Id != 0;
         UsuarioCatalogo catalogoUs = new UsuarioCatalogo();
         MenuViewModel menuViewModel = new();
-        PedidoViewModel pedidoViewModel = new();
         private object vmActual;
         public object ViewModelActual
         {

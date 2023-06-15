@@ -36,11 +36,11 @@
            
         </Border>
         
-        <StackPanel Width="40"
+        <Grid Width="40"
                    DockPanel.Dock="Left" 
                    Background="White">
-            <StackPanel.Style>
-                <Style TargetType="StackPanel">
+            <Grid.Style>
+                <Style TargetType="Grid">
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding EstaConectado}" 
                                      Value="False">
@@ -50,12 +50,20 @@
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </StackPanel.Style>
+            </Grid.Style>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
             <Button Background="Transparent" Padding="0" BorderThickness="0" Margin="0">
                 <fa:IconImage Icon="Utensils" Foreground="#efa42b" Width="30" Height="30" Margin="0,10" VerticalAlignment="Top"></fa:IconImage>
             </Button>
-            
-        </StackPanel>
+            <Button Background="Transparent" Padding="0" BorderThickness="0" Margin="0" VerticalAlignment="Bottom">
+                <fa:IconImage Icon="RightFromBracket" Foreground="#efa42b" Width="30" Height="30" Margin="0,10" VerticalAlignment="Bottom"></fa:IconImage>
+            </Button>
+        </Grid>
         
         
         <ContentControl  Content="{Binding ViewModelActual}" />
