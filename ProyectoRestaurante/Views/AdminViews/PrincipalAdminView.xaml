@@ -48,9 +48,10 @@
     </UserControl.Resources>
     <DockPanel>
         <Grid Width="40"
-              Margin="20,0" x:Name="ButtonAdd"
+              Margin="20,0"
                    DockPanel.Dock="Left" 
                    Background="White">
+            
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
@@ -63,19 +64,27 @@
             <Button Background="Transparent" Grid.Row="1" Padding="0" BorderThickness="0" Margin="0" VerticalAlignment="Bottom" Command="{Binding NavegarUsuariosCommand}">
                 <fa:IconImage Icon="Users" Foreground="#efa42b" Width="30" Height="30" Margin="0,10" VerticalAlignment="Bottom"></fa:IconImage>
             </Button>
-            <Button Background="Transparent"  Grid.Row="2" Padding="0" BorderThickness="0" Margin="0" VerticalAlignment="Bottom" Command="{Binding NavegarUsuariosCommand}">
-                <fa:IconImage  Icon="Add" Foreground="#efa42b" Width="30" Height="30" Margin="0,10" VerticalAlignment="Bottom"></fa:IconImage>
+            <Button Background="Transparent" Grid.Row="2" Padding="0" BorderThickness="0" Margin="0" VerticalAlignment="Bottom" Command="{Binding NavegarUsuariosCommand}">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Operacion}" Value="VerMenu">
+                                <Setter Property="Visibility" Value="Collapsed">
+                                    
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            <fa:IconImage Icon="Add" Foreground="#efa42b" Width="30" Height="30" Margin="0,10" VerticalAlignment="Bottom"></fa:IconImage>
             </Button>
-            
         </Grid>
-        <ContentControl x:Name="myContentControl" >
+        <ContentControl >
             <ContentControl.Style>
                 <Style TargetType="ContentControl">
                     <Setter Property="Content" Value="{StaticResource VerMenu}"></Setter>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Content, ElementName=myContentControl}" Value="{StaticResource VerMenu}">
-                            <Setter  TargetName="" Property="Visibility" Value="Visible" />
-                        </DataTrigger>
+                        
                     </Style.Triggers>
                 </Style>
                 
