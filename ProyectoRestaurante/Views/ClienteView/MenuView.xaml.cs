@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace ProyectoRestaurante.Views.ClienteView
 {
     /// <summary>
-    /// Lógica de interacción para ClienteView.xaml
+    /// Lógica de interacción para MenuView.xaml
     /// </summary>
-    public partial class ClienteView : UserControl
+    public partial class MenuView : UserControl
     {
-        public ClienteView()
+        public MenuView()
         {
             InitializeComponent();
         }

@@ -23,8 +23,21 @@ namespace ProyectoRestaurante.ViewModels
         #region Propiedades e Instancias
         public bool EstaConectado => Usuario.Id != 0;
         UsuarioCatalogo catalogoUs = new UsuarioCatalogo();
-        LoginView LV;
-        RegistrarView RV;
+        MenuViewModel menuViewModel = new();
+        PedidoViewModel pedidoViewModel = new();
+        private object vmActual;
+        public object ViewModelActual
+        {
+            get { return vmActual; }
+            set 
+            {
+                vmActual = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
+            }
+        }
+
+        LoginView LV; //
+        RegistrarView RV; //
         public Usuario? Usuario { get; set; }
         public string Error { get; set; }
         public UserControl Vista { get; set; }
@@ -46,6 +59,7 @@ namespace ProyectoRestaurante.ViewModels
             VerRegistrarCommand = new RelayCommand(VerRegistar);
             VolverCommand = new RelayCommand(Volver);
 
+            ViewModelActual = this;
             //Creacion de un nuevo objeto "Usuario"
             Usuario = new();
             //Vista predeterminada "LoginView"
@@ -128,6 +142,7 @@ namespace ProyectoRestaurante.ViewModels
                     Error = "contrasena incorrecta";
 
                 }
+                ViewModelActual = menuViewModel;
                 Actualizar();
             }
         }
@@ -136,7 +151,7 @@ namespace ProyectoRestaurante.ViewModels
         [Authorize(Roles = "Cliente")]
         private void AccionesUsuarioCliente()
         {
-            Vista = new ClienteView();
+            Vista = new MenuView();
         }
 
         [Authorize(Roles = "Administrador")]

@@ -3,12 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ProyectoRestaurante.Views" xmlns:vm="clr-namespace:ProyectoRestaurante.ViewModels" xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        xmlns:local="clr-namespace:ProyectoRestaurante.Views"
+      
+        xmlns:vm="clr-namespace:ProyectoRestaurante.ViewModels" xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
         Title="PrincipalView" Height="450" Width="800">
     <Window.DataContext>
         <vm:MainViewModel></vm:MainViewModel>
     </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:MenuViewModel}">
+            <local:IndexClienteView></local:IndexClienteView>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:MainViewModel}">
+            <local:LoginView></local:LoginView>
+        </DataTemplate>
+    </Window.Resources>
     <DockPanel>
         <Border x:Name="BrdNav" DockPanel.Dock="Top" BorderThickness="0,0,0,2" BorderBrush="#efa42b">
             <Border.Style>
@@ -29,8 +39,8 @@
         <StackPanel Width="40"
                    DockPanel.Dock="Left" 
                    Background="White">
-            <!--<DockPanel.Style>
-                <Style TargetType="DockPanel">
+            <StackPanel.Style>
+                <Style TargetType="StackPanel">
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding EstaConectado}" 
                                      Value="False">
@@ -40,15 +50,15 @@
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </DockPanel.Style>-->
-            <Button Background="Transparent" Padding="0" BorderThickness="0">
-                <fa:IconImage Icon="Utensils" Width="20" Height="20" VerticalAlignment="Top"></fa:IconImage>
+            </StackPanel.Style>
+            <Button Background="Transparent" Padding="0" BorderThickness="0" Margin="0">
+                <fa:IconImage Icon="Utensils" Foreground="#efa42b" Width="30" Height="30" Margin="0,10" VerticalAlignment="Top"></fa:IconImage>
             </Button>
             
         </StackPanel>
         
         
-        <ContentControl  Content="{Binding Vista}" />
+        <ContentControl  Content="{Binding ViewModelActual}" />
         
     </DockPanel>
 </Window>
