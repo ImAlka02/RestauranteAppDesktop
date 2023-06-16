@@ -5,13 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProyectoRestaurante.Views.AdminViews"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             Height="auto" Width="auto">
     <UserControl.Resources>
         <Style TargetType="Label">
             <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontFamily" Value="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light"></Setter>
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontFamily" Value="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light"></Setter>
+            <Setter Property="Foreground" Value="gray"/>
         </Style>
         <Style TargetType="Button">
             <Setter Property="FontSize" Value="16" />
@@ -22,7 +25,8 @@
 
     <StackPanel>
         <Border Background="#efa42b" Padding="10">
-            <TextBlock Text="Editar Usuario" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" />
+            <TextBlock Text="Editar Usuario" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"
+                       FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light"/>
         </Border>
 
         <StackPanel Margin="30,20">
@@ -40,16 +44,9 @@
         </StackPanel>
 
         <StackPanel Margin="30,10">
-            <Label>Contraseña:</Label>
-            <Border BorderThickness="0,0,0,2" BorderBrush="#efa42b">
-                <TextBox BorderThickness="0" Height="30" Text="{Binding Usuario.Contrasena}" />
-            </Border>
-        </StackPanel>
-
-        <StackPanel Margin="30,10">
             <Label>Rol:</Label>
             <Border BorderThickness="0,0,0,2" BorderBrush="#efa42b">
-                <ComboBox BorderThickness="0" Height="30" SelectedValue="{Binding Usuario.IdRol}" SelectedValuePath="Tag">
+                <ComboBox   BorderThickness="0" Height="30" SelectedValue="{Binding Usuario.IdRol}" SelectedValuePath="Tag">
                     <ComboBoxItem Content="Cliente" Tag="1"></ComboBoxItem>
                     <ComboBoxItem Content="Administrador" Tag="2"></ComboBoxItem>
                 </ComboBox>

@@ -81,7 +81,7 @@ namespace ProyectoRestaurante.Catalogos
                 if (string.IsNullOrWhiteSpace(u.Nombre))
                     errores.Add("Necesita escribir el nombre");
                 else if (!Regex.IsMatch(u.Nombre, @"^[a-z A-ZñÑ]+$"))
-                    errores.Add("Escriba bien el nombre del usuario, no puede estar formado por carácteres especiales o números.");
+                    errores.Add("Escriba bien el nombre del usuario, no puede estar formado por caracteres especiales o números.");
                 if (string.IsNullOrEmpty(u.Correo))
                     errores.Add("Escriba el correo electrónico");
                 else if (!Regex.IsMatch(u.Correo, @"^[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}$"))

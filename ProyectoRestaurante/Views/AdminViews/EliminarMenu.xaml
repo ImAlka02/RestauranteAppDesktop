@@ -3,19 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ProyectoRestaurante.Views.AdminViews"
+             xmlns:local="clr-namespace:ProyectoRestaurante.Views.AdminViews" xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             Height="auto" Width="auto">
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <TextBlock FontSize="24" FontWeight="Bold"><Run  Text="¿Esta seguro de eliminar el platillo"></Run>
-                                   <Run Text="{Binding Menu.Nombre}" Foreground="#efa42b"></Run><Run  Text=" del Menú?"></Run>
+        <TextBlock FontSize="26" FontWeight="Bold" FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light"><Run  Text="¿Está seguro de eliminar el platillo"></Run>
+                                   <Run Text="{Binding Menu.Nombre}" Foreground="#efa42b" FontFamily="/Assets/Rubik-Italic-VariableFont_wght.ttf #Rubik Light"></Run><Run  Text=" del Menú?"></Run>
         </TextBlock>
         <WrapPanel HorizontalAlignment="Center" Margin="10">
             <Button Command="{Binding EliminarMenuCommand}" Height="50" Margin="10,0" Background="Transparent" BorderThickness="0">
-                <Image Source="/Assets/aceptar.png" ></Image>
+                <fa:IconImage Icon="Check" Height="35" Width="40" Foreground="#efa42b"></fa:IconImage>
             </Button>
             <Button Command="{Binding NavegarMenuCommand}" Height="50" Margin="10,0" Background="Transparent" BorderThickness="0">
-                <Image Source="/Assets/cancelar.png" ></Image>
+                <fa:IconImage Icon="Xmark" Height="35" Width="40" Foreground="#efa42b"></fa:IconImage>
             </Button>
         </WrapPanel>
         
