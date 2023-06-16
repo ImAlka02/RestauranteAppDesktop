@@ -23,5 +23,10 @@ namespace ProyectoRestaurante.Views
         {
             InitializeComponent();
         }
+
+        private void pnlControlBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }
