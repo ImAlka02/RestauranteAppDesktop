@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ProyectoRestaurante.Catalogos;
 using ProyectoRestaurante.Models;
 using ProyectoRestaurante.Views;
@@ -19,6 +20,7 @@ namespace ProyectoRestaurante.ViewModels
     public class MenuViewModel : INotifyPropertyChanged 
     {
 
+        int index = 0;
         private Accion operacion;
         public Accion Operacion
         {
@@ -49,10 +51,11 @@ namespace ProyectoRestaurante.ViewModels
         public ICommand EditarMenuCommand { get; set; }
         public ICommand NavegarUsuariosCommand { get; set; }
         public ICommand NavegarMenuCommand { get; set; }
+        public ICommand GetMenusXNombreCommand { get; set; }
 
 
 
-        public MenuViewModel()
+    public MenuViewModel()
         {
             VerRegistrarMenuCommand = new RelayCommand(VerRegistrarMenu);
             VerEliminarMenuCommand = new RelayCommand(VerEliminarMenu);
@@ -62,8 +65,27 @@ namespace ProyectoRestaurante.ViewModels
             EditarMenuCommand = new RelayCommand<Menu>(EditarMenu);
             NavegarUsuariosCommand = new RelayCommand(VerUsuarios);
             NavegarMenuCommand = new RelayCommand(VerMenu);
+            GetMenusXNombreCommand = new RelayCommand<string>(GetMenusXNombre);
             ActualizarBD();
             operacion = Accion.VerMenu;
+        }
+
+        private void GetMenusXNombre(string obj)
+        {
+            if (obj != "")
+            {
+                ListaMenu.Clear();
+                foreach (var item in catalogoMen.GetMenuXNombre(obj))
+                {
+                    ListaMenu.Add(item);
+                }
+                Actualizar();
+            }
+            else
+            {
+                Actualizar();
+                ActualizarBD();
+            }
         }
 
         private void VerMenu()
@@ -80,7 +102,37 @@ namespace ProyectoRestaurante.ViewModels
 
         private void EditarMenu(Menu m)
         {
-            throw new NotImplementedException();
+            Error = "";
+            if (Menu != null)
+            {
+                if (catalogoMen.Validar(Menu, out List<string> errores))
+                {
+                    var temporal = catalogoMen.ObtenerMenus(Menu.Id);
+                    if (temporal != null)
+                    {
+                        temporal.Id = Menu.Id;
+                        temporal.Nombre = Menu.Nombre;
+                        temporal.Descripcion = Menu.Descripcion;
+                        temporal.Precio = Menu.Precio;
+
+                        catalogoMen.Update(temporal);
+                        ActualizarBD();
+                        operacion = Accion.VerMenu;
+                    }
+                }
+                else
+                {
+                    foreach (var item in errores)
+                    {
+                        Error = $"{Error} {item} {Environment.NewLine}";
+                        Actualizar();
+                    }
+                }
+            }
+            ActualizarBD();
+            Actualizar();
+            Error = "";
+            
         }
 
         private void EliminarMenu()
@@ -128,9 +180,21 @@ namespace ProyectoRestaurante.ViewModels
 
         private void VerEditarMenu(Menu m)
         {
+            //Operacion = Accion.EditarMenu;
+
             if (Menu != null)
             {
+                Menu e = new()
+                {
+                    Id = Menu.Id,
+                    Nombre = Menu.Nombre,
+                    Precio = Menu.Precio,
+                    Descripcion = Menu.Descripcion,
 
+                };
+                index = ListaMenu.IndexOf(Menu);
+                Menu = e;
+                Actualizar();
             }
         }
 

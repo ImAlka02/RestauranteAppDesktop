@@ -21,7 +21,10 @@ namespace ProyectoRestaurante.Catalogos
         {
             return context.Menu.Where(x => x.Id == Id).FirstOrDefault();
         }
-        
+        public IEnumerable<Menu> GetMenuXNombre(string palabra)
+        {
+            return context.Menu.Where(x => x.Nombre.ToLower() == palabra.ToLower());
+        }
         public void Delete(Menu a)
         {
             context.Menu.Remove(a);
