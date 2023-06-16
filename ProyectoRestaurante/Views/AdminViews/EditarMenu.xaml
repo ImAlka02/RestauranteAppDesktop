@@ -58,7 +58,7 @@
 
         <Button Margin="0,30,0,0" Content="Aceptar" Command="{Binding EditarMenuCommand}" Background="#efa42b" Foreground="White" Width="100"
                 FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light" BorderThickness="0"/>
-        <Button Content="Cancelar" Command="{Binding VolverCommand}" FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light" 
+        <Button Content="Cancelar" Command="{Binding NavegarMenuCommand}" FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light" 
                 FontSize="12" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Width="100">
         </Button>
 

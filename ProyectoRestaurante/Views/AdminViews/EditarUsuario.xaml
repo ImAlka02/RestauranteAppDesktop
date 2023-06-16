@@ -46,12 +46,22 @@
             </Border>
         </StackPanel>
 
+        <StackPanel Margin="30,10">
+            <Label>Rol:</Label>
+            <Border BorderThickness="0,0,0,2" BorderBrush="#efa42b">
+                <ComboBox BorderThickness="0" Height="30" SelectedValue="{Binding Usuario.IdRol}" SelectedValuePath="Tag">
+                    <ComboBoxItem Content="Cliente" Tag="1"></ComboBoxItem>
+                    <ComboBoxItem Content="Administrador" Tag="2"></ComboBoxItem>
+                </ComboBox>
+            </Border>
+        </StackPanel>
+
         <TextBlock Margin="30,10" Text="{Binding Error}" Foreground="Red" HorizontalAlignment="Center" />
 
-        <Button Margin="0,30,0,0" Content="Aceptar" Background="#efa42b" Foreground="White" Width="100"
+        <Button Margin="0,30,0,0" Command="{Binding EditarUsuarioCommand}" Content="Aceptar" Background="#efa42b" Foreground="White" Width="100"
                 FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light" BorderThickness="0"/>
         <!--bindear editar ususario-->
-        <Button Content="Cancelar" Command="{Binding VolverCommand}" FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light" 
+        <Button Content="Cancelar" Command="{Binding NavegarUsuariosCommand}" FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light" 
                 FontSize="12" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Width="100">
         </Button>
 

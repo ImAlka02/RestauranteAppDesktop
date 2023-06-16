@@ -49,6 +49,10 @@ namespace ProyectoRestaurante.Catalogos
         {
             return context.Usuario.FirstOrDefault(x=> x.Correo == correo);
         }
+        public Usuario? GetUsuarioByID(int id)
+        {
+            return context.Usuario.FirstOrDefault(x => x.Id == id);
+        }
         public IEnumerable<Usuario> GetUsuarios()
         {
             return context.Usuario.Include(x => x.IdRolNavigation);

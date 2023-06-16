@@ -47,9 +47,13 @@
         </Style>
 
 
-        <viewMenu:MenuView x:Key="VerMenu"></viewMenu:MenuView>
-        <local:UsuariosView x:Key="VerUsuarios"></local:UsuariosView>
+        <local:MenuViewAdmin x:Key="VerMenu"></local:MenuViewAdmin>
         <local:AgregarMenu x:Key="AgregarPlatillo"></local:AgregarMenu>
+        <local:EditarMenu x:Key="EditarPlatillo"></local:EditarMenu>
+        <local:EliminarMenu x:Key="EliminarPlatillo"></local:EliminarMenu>
+        <local:UsuariosView x:Key="VerUsuarios"></local:UsuariosView>
+        <local:EditarUsuario x:Key="EditarUsuario"></local:EditarUsuario>
+        <local:EliminarUsuario x:Key="EliminarUsuario"></local:EliminarUsuario>
     </UserControl.Resources>
     <DockPanel>
         <Grid Width="40"
@@ -110,6 +114,18 @@
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Operacion}" Value="{x:Static local:Accion.AgregarPlatillo}" >
                             <Setter Property="Content" Value="{StaticResource AgregarPlatillo}"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Operacion}" Value="{x:Static local:Accion.EditarPlatillo}" >
+                            <Setter Property="Content" Value="{StaticResource EditarPlatillo}"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Operacion}" Value="{x:Static local:Accion.EliminarPlatillo}" >
+                            <Setter Property="Content" Value="{StaticResource EliminarPlatillo}"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Operacion}" Value="{x:Static local:Accion.EditarUsuario}" >
+                            <Setter Property="Content" Value="{StaticResource EditarUsuario}"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Operacion}" Value="{x:Static local:Accion.EliminarUsuario}" >
+                            <Setter Property="Content" Value="{StaticResource EliminarUsuario}"></Setter>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>

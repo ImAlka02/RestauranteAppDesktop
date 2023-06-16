@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace ProyectoRestaurante.Views.AdminViews
 {
     /// <summary>
-    /// Lógica de interacción para EditarUsuario.xaml
+    /// Lógica de interacción para MenuViewAdmin.xaml
     /// </summary>
-    public partial class EditarUsuario : UserControl
+    public partial class MenuViewAdmin : UserControl
     {
-        public EditarUsuario()
+        public MenuViewAdmin()
         {
             InitializeComponent();
-        }
-
-        private void ComboBox_Selected(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

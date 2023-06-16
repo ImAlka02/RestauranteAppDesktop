@@ -11,10 +11,10 @@
                                    <Run Text="{Binding Menu.Nombre}" Foreground="#efa42b"></Run><Run  Text=" del Menú?"></Run>
         </TextBlock>
         <WrapPanel HorizontalAlignment="Center" Margin="10">
-            <Button Height="50" Margin="10,0" Background="Transparent" BorderThickness="0">
+            <Button Command="{Binding EliminarMenuCommand}" Height="50" Margin="10,0" Background="Transparent" BorderThickness="0">
                 <Image Source="/Assets/aceptar.png" ></Image>
             </Button>
-            <Button Height="50" Margin="10,0" Background="Transparent" BorderThickness="0">
+            <Button Command="{Binding NavegarMenuCommand}" Height="50" Margin="10,0" Background="Transparent" BorderThickness="0">
                 <Image Source="/Assets/cancelar.png" ></Image>
             </Button>
         </WrapPanel>

@@ -8,17 +8,18 @@
              mc:Ignorable="d" 
              Height="auto" Width="auto">
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <TextBlock FontSize="24" FontWeight="Bold"><Run  Text="¿Esta seguro de eliminar el usuario"></Run>
+        <TextBlock FontSize="24" FontWeight="Bold" TextWrapping="Wrap">
+            <Run  Text="¿Esta seguro de eliminar el usuario"></Run>
             <Run Text="{Binding Usuario.Nombre}" Foreground="#efa42b"></Run>
-            <Run Text=" con el correo "></Run>
+            <Run Text="con el correo"></Run>
             <Run Foreground="#efa42b" Text="{Binding Usuario.Correo}"></Run>
             <Run Text="?"></Run>
         </TextBlock>
         <WrapPanel HorizontalAlignment="Center" Margin="10">
-            <Button Height="50" Margin="10,0" Background="Transparent" BorderThickness="0">
+            <Button Command="{Binding EliminarUsuarioCommand}" Height="50" Margin="10,0" Background="Transparent" BorderThickness="0">
                 <fa:IconImage Icon="Check" Height="35" Width="40" Foreground="#efa42b"></fa:IconImage>
             </Button>
-            <Button Height="50" Margin="10,0" Background="Transparent" BorderThickness="0">
+            <Button Command="{Binding NavegarUsuariosCommand}" Height="50" Margin="10,0" Background="Transparent" BorderThickness="0">
                 <fa:IconImage Icon="Xmark" Height="35" Width="40" Foreground="#efa42b"></fa:IconImage>
             </Button>
         </WrapPanel>

@@ -14,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ProyectoRestaurante.ViewModels
 {
@@ -52,22 +53,103 @@ namespace ProyectoRestaurante.ViewModels
         public ICommand NavegarUsuariosCommand { get; set; }
         public ICommand NavegarMenuCommand { get; set; }
         public ICommand GetMenusXNombreCommand { get; set; }
+        public ICommand VerEditarUsuarioCommand { get; set; }
+        public ICommand EditarUsuarioCommand { get; set; }
+        public ICommand VerEliminarUsuarioCommand { get; set; }
+        public ICommand EliminarUsuarioCommand { get; set; }
 
-
-
-    public MenuViewModel()
+        public MenuViewModel()
         {
             VerRegistrarMenuCommand = new RelayCommand(VerRegistrarMenu);
-            VerEliminarMenuCommand = new RelayCommand(VerEliminarMenu);
-            VerEditarMenuCommand = new RelayCommand<Menu>(VerEditarMenu);
+            VerEliminarMenuCommand = new RelayCommand<int>(VerEliminarMenu);
+            VerEditarMenuCommand = new RelayCommand<int>(VerEditarMenu);
             RegistrarMenuCommand = new RelayCommand(RegistrarMenu);
             EliminarMenuCommand = new RelayCommand(EliminarMenu);
             EditarMenuCommand = new RelayCommand<Menu>(EditarMenu);
             NavegarUsuariosCommand = new RelayCommand(VerUsuarios);
             NavegarMenuCommand = new RelayCommand(VerMenu);
             GetMenusXNombreCommand = new RelayCommand<string>(GetMenusXNombre);
+            VerEditarUsuarioCommand = new RelayCommand<int>(VerEditarUsuario);
+            EditarUsuarioCommand = new RelayCommand(EditarUser);
+            VerEliminarUsuarioCommand = new RelayCommand<int>(VerEliminarUsuario);
+            EliminarUsuarioCommand = new RelayCommand(EliminarUser);
             ActualizarBD();
             operacion = Accion.VerMenu;
+        }
+
+        private void EliminarUser()
+        {
+            if (Usuario != null)
+            {
+                catalogoUser.Eliminar(Usuario);
+                operacion = Accion.VerUsuarios;
+                ActualizarBD();
+                Actualizar();
+            }
+        }
+
+        private void VerEliminarUsuario(int id)
+        {
+            Usuario = catalogoUser.GetUsuarioByID(id);
+            if (Usuario != null)
+            {
+                operacion = Accion.EliminarUsuario;
+                Actualizar();
+            }
+        }
+
+        private void EditarUser()
+        {
+            if (Usuario != null)
+            {
+                if (catalogoUser.Validar(Usuario, out List<string> errores))
+                {
+                    var temporal = catalogoUser.GetUsuarioByID(Usuario.Id);
+                    if (temporal != null)
+                    {
+                        temporal.Id = Usuario.Id;
+                        temporal.Nombre = Usuario.Nombre;
+                        temporal.Correo = Usuario.Correo;
+                        temporal.Contrasena = Usuario.Contrasena;
+                        temporal.IdRol = Usuario.IdRol;
+
+                        catalogoUser.Editar(temporal);
+                        ActualizarBD();
+                        operacion = Accion.VerUsuarios;
+                    }
+                }
+                else
+                {
+                    foreach (var item in errores)
+                    {
+                        Error = $"{Error} {item} {Environment.NewLine}";
+                        Actualizar();
+                    }
+                }
+            }
+            Error = "";
+            ActualizarBD();
+            Actualizar();
+        }
+
+        private void VerEditarUsuario(int id)
+        {
+            Operacion = Accion.EditarUsuario;
+            Usuario = catalogoUser.GetUsuarioByID(id);
+            if (Usuario != null)
+            {
+                Usuario u = new()
+                {
+                    Id = Usuario.Id,
+                    Nombre = Usuario.Nombre,
+                    Correo = Usuario.Correo,
+                    Contrasena = Usuario.Contrasena,
+                    IdRol = Usuario.IdRol
+                };
+                index = UsuarioLista.IndexOf(Usuario);
+                Usuario = u;
+                Actualizar();
+            }
         }
 
         private void GetMenusXNombre(string obj)
@@ -102,7 +184,7 @@ namespace ProyectoRestaurante.ViewModels
 
         private void EditarMenu(Menu m)
         {
-            Error = "";
+            
             if (Menu != null)
             {
                 if (catalogoMen.Validar(Menu, out List<string> errores))
@@ -129,16 +211,22 @@ namespace ProyectoRestaurante.ViewModels
                     }
                 }
             }
+            Error = "";
             ActualizarBD();
             Actualizar();
-            Error = "";
+            
             
         }
 
         private void EliminarMenu()
         {
-            catalogoMen.Delete(Menu);
-            Actualizar();
+            if (Menu != null)
+            {
+                catalogoMen.Delete(Menu);
+                operacion = Accion.VerMenu;
+                ActualizarBD();
+                Actualizar();
+            }
         }
 
         private void RegistrarMenu()
@@ -178,10 +266,10 @@ namespace ProyectoRestaurante.ViewModels
         
         }
 
-        private void VerEditarMenu(Menu m)
+        private void VerEditarMenu(int Id)
         {
-            //Operacion = Accion.EditarMenu;
-
+            Operacion = Accion.EditarPlatillo;
+            Menu = catalogoMen.ObtenerMenus(Id);
             if (Menu != null)
             {
                 Menu e = new()
@@ -198,11 +286,12 @@ namespace ProyectoRestaurante.ViewModels
             }
         }
 
-        private void VerEliminarMenu()
+        private void VerEliminarMenu(int Id)
         {
+            Menu = catalogoMen.ObtenerMenus(Id);
             if (Menu != null)
             {
-                //operacion = Accion.EliminarMenu;
+                operacion = Accion.EliminarPlatillo;
                 Actualizar();
             }
         }

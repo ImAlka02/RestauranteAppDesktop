@@ -11,7 +11,10 @@ namespace ProyectoRestaurante.Views.AdminViews
         VerMenu,
         VerUsuarios,
         AgregarPlatillo,
-        EliminarPlatillo
+        EliminarPlatillo,
+        EditarPlatillo,
+        EditarUsuario,
+        EliminarUsuario
     }
 
 }
