@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\agregar.png" />
     <None Remove="Assets\ElBuenGustoLogo.png" />
     <None Remove="Assets\Marmelad-Regular.ttf" />
     <None Remove="Assets\Rubik-Italic-VariableFont_wght.ttf" />
@@ -15,6 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\agregar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\ElBuenGustoLogo.png" />
     <Resource Include="Assets\Marmelad-Regular.ttf" />
     <Resource Include="Assets\Rubik-Italic-VariableFont_wght.ttf" />
