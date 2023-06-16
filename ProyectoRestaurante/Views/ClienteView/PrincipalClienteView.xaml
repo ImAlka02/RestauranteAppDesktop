@@ -6,7 +6,7 @@
              xmlns:vm="clr-namespace:ProyectoRestaurante.ViewModels"
              xmlns:local="clr-namespace:ProyectoRestaurante.Views.ClienteView"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             Height="auto" Width="auto">
     <UserControl.DataContext>
         <vm:MenuViewModel></vm:MenuViewModel>
     </UserControl.DataContext>

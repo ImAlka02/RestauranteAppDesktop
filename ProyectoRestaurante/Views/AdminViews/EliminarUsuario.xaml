@@ -8,11 +8,11 @@
              mc:Ignorable="d" 
              Height="auto" Width="auto">
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <TextBlock FontSize="24" FontWeight="Bold" TextWrapping="Wrap">
-            <Run  Text="¿Esta seguro de eliminar el usuario"></Run>
-            <Run Text="{Binding Usuario.Nombre}" Foreground="#efa42b"></Run>
+        <TextBlock FontSize="26" FontWeight="Bold" TextWrapping="Wrap" FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light">
+            <Run  Text="¿Está seguro de eliminar el usuario"></Run>
+            <Run Text="{Binding Usuario.Nombre}" Foreground="#efa42b" FontFamily="/Assets/Rubik-Italic-VariableFont_wght.ttf #Rubik Light"></Run>
             <Run Text="con el correo"></Run>
-            <Run Foreground="#efa42b" Text="{Binding Usuario.Correo}"></Run>
+            <Run Foreground="#efa42b" Text="{Binding Usuario.Correo}" FontFamily="/Assets/Rubik-Italic-VariableFont_wght.ttf #Rubik Light"></Run>
             <Run Text="?"></Run>
         </TextBlock>
         <WrapPanel HorizontalAlignment="Center" Margin="10">

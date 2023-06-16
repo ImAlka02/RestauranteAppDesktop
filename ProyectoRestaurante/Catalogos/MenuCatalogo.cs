@@ -51,7 +51,7 @@ namespace ProyectoRestaurante.Catalogos
                 if (string.IsNullOrWhiteSpace(m.Nombre))
                     errores.Add("Necesita escribir el nombre del platillo");
                 else if (!Regex.IsMatch(m.Nombre, @"^[a-z A-ZñÑ]+$"))
-                    errores.Add("Escriba bien el nombre del platillo, no puede estar formado por carácteres especiales o números.");
+                    errores.Add("Escriba bien el nombre del platillo, no puede estar formado por caracteres especiales o números.");
                 else if (m.Nombre.Length > 40)
                     errores.Add("El nombre del platillo no puede exceder los 40 caracteres");
                 if (m.Precio <= 0)
