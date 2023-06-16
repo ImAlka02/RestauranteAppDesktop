@@ -173,12 +173,14 @@ namespace ProyectoRestaurante.ViewModels
         private void VerMenu()
         {
             operacion = Accion.VerMenu;
+            Menu = new();
             Actualizar();
         }
 
         private void VerUsuarios()
         {
             operacion = Accion.VerUsuarios;
+            Usuario = new();
             Actualizar();
         }
 
@@ -196,8 +198,20 @@ namespace ProyectoRestaurante.ViewModels
                         temporal.Nombre = Menu.Nombre;
                         temporal.Descripcion = Menu.Descripcion;
                         temporal.Precio = Menu.Precio;
-
                         catalogoMen.Update(temporal);
+
+                        if (!string.IsNullOrWhiteSpace(Imagen))
+                        {
+                            var t = $"{AppDomain.CurrentDomain.BaseDirectory}imagenes";
+                            var t1 = $"{AppContext.BaseDirectory}";
+                            if (!Directory.Exists(t))
+                            {
+                                Directory.CreateDirectory(t);
+                            }
+                            if (copiaImagen != Imagen)
+                                File.Copy(Imagen, $"{t}\\{temporal.Id}.jpg", true);
+                        }
+
                         ActualizarBD();
                         operacion = Accion.VerMenu;
                     }
@@ -282,6 +296,8 @@ namespace ProyectoRestaurante.ViewModels
                 };
                 index = ListaMenu.IndexOf(Menu);
                 Menu = e;
+                Imagen = $"{AppDomain.CurrentDomain.BaseDirectory}imagenes\\{Menu.Id}.jpg";
+                copiaImagen = Imagen;
                 Actualizar();
             }
         }

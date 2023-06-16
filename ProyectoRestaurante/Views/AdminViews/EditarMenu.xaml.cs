@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,16 @@ namespace ProyectoRestaurante.Views.AdminViews
         public EditarMenu()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog file = new();
+            file.Filter = "Imagenes|*.jpg;*.png;*.bmp";
+            if (file.ShowDialog() == true)
+            {
+                txtImagen.Text = file.FileName;
+            }
         }
     }
 }

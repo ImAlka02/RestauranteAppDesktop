@@ -89,7 +89,7 @@
             <fa:IconImage Icon="Add" Foreground="#efa42b" Width="30" Height="30" Margin="0,10" VerticalAlignment="Bottom"></fa:IconImage>
             </Button>
             
-            <Button Background="Transparent" Grid.Row="3" Padding="0" BorderThickness="0" Margin="0" VerticalAlignment="Bottom">
+            <!--<Button Background="Transparent" Grid.Row="3" Padding="0" BorderThickness="0" Margin="0" VerticalAlignment="Bottom">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Style.Triggers>
@@ -102,7 +102,7 @@
                     </Style>
                 </Button.Style>
                 <fa:IconImage Icon="UserPlus" Foreground="#efa42b" Width="30" Height="30" Margin="0,10" VerticalAlignment="Bottom"></fa:IconImage>
-            </Button>
+            </Button>-->
         </Grid>
         <ContentControl >
             <ContentControl.Style>
