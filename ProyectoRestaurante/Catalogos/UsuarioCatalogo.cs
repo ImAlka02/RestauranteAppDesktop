@@ -37,7 +37,7 @@ namespace ProyectoRestaurante.Catalogos
 
         private void EstablecerTipoUsuario(Usuario us)
         {
-            GenericIdentity user = new(us.Nombre);
+            GenericIdentity user = new(us.Nombre);//Correo
             if (us != null)
             {
                 string[] roles = new string[] { us.IdRolNavigation.Nombre };

@@ -12,6 +12,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -249,6 +250,8 @@ namespace ProyectoRestaurante.ViewModels
             {
                 if (catalogoMen.Validar(Menu, out List<string> errores))
                 {
+                    
+                    var a = Thread.CurrentPrincipal.Identity;
                     catalogoMen.Create(Menu);
                     if (!string.IsNullOrWhiteSpace(Imagen))
                     {
