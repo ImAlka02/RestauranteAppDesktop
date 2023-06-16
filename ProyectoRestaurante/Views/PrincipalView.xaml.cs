@@ -46,7 +46,7 @@ namespace ProyectoRestaurante.Views
 
         private void btnMaximize_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState.Maximized;
+            this.WindowState = WindowState.Minimized;
         }
 
         private void btnMinimize_Click(object sender, RoutedEventArgs e)

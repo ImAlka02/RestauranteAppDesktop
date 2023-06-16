@@ -81,7 +81,7 @@
                 </Border.Style>
             <fa:IconImage Icon="Utensils" Height="40" Width="40" Margin="2" Foreground="#efa42b" VerticalAlignment="Center" HorizontalAlignment="Center"></fa:IconImage>
         </Border>
-        <Border DockPanel.Dock="Top" BorderThickness="0,0,0,2"   BorderBrush="#efa42b">
+        <Border DockPanel.Dock="Top" BorderThickness="0,0,0,2" Margin="0"  BorderBrush="#efa42b">
                 <Grid Height="60"
                    Margin="0,0,0,2"
                    Background="White">
@@ -108,7 +108,7 @@
                     <ColumnDefinition Width="auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.RowSpan="1" Grid.ColumnSpan="3" x:Name="pnlControlBar" Grid.Row="0" Orientation="Horizontal" FlowDirection="RightToLeft" Background="Transparent" MouseLeftButtonDown="pnlControlBar_MouseLeftButtonDown" MouseEnter="pnlControlBar_MouseEnter">
+                <StackPanel Grid.RowSpan="1" Margin="0" Grid.ColumnSpan="3" x:Name="pnlControlBar" Grid.Row="0" Orientation="Horizontal" FlowDirection="RightToLeft" Background="Transparent" MouseLeftButtonDown="pnlControlBar_MouseLeftButtonDown" MouseEnter="pnlControlBar_MouseEnter">
                     <Button x:Name="btnClose"
                                 Style="{StaticResource controlButton}"
                                 Tag="Black"
