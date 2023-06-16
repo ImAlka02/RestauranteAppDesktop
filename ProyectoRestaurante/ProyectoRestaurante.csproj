@@ -12,6 +12,7 @@
     <None Remove="Assets\agregar.png" />
     <None Remove="Assets\cancelar.png" />
     <None Remove="Assets\ElBuenGustoLogo.png" />
+    <None Remove="Assets\Geologica-VariableFont_CRSV,SHRP,slnt,wght.ttf" />
     <None Remove="Assets\Marmelad-Regular.ttf" />
     <None Remove="Assets\Rubik-Italic-VariableFont_wght.ttf" />
     <None Remove="Assets\Rubik-VariableFont_wght.ttf" />
@@ -31,6 +32,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\ElBuenGustoLogo.png" />
+    <Resource Include="Assets\Geologica-VariableFont_CRSV,SHRP,slnt,wght.ttf" />
     <Resource Include="Assets\Marmelad-Regular.ttf" />
     <Resource Include="Assets\Rubik-Italic-VariableFont_wght.ttf" />
     <Resource Include="Assets\Rubik-VariableFont_wght.ttf" />

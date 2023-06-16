@@ -6,14 +6,9 @@
         xmlns:local="clr-namespace:ProyectoRestaurante.Views"
         xmlns:vm="clr-namespace:ProyectoRestaurante.ViewModels" xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
-<<<<<<< HEAD
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        
-        Title="PrincipalView" Height="450" Width="800">
-=======
-        Title="" Height="auto" Width="auto">
->>>>>>> cdfd15c2dcde3f09b5205ad98cf06af97d161e05
+        Height="auto" Width="auto">
     <Window.DataContext>
         <vm:MainViewModel></vm:MainViewModel>
     </Window.DataContext>
@@ -40,6 +35,35 @@
             </Setter>
 
         </Style>
+
+        <Style x:Key="controlButton" TargetType="Button">
+            <!--Normal button style-->
+            <Setter Property="Width" Value="35"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                            CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <!--Button Style on hover-->
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#efa42b"/>
+                    <Setter Property="Foreground" Value="{Binding Path=Tag, RelativeSource={RelativeSource Self}}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="controlButtonIcon" TargetType="fa:IconImage">
+            <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/>
+            <Setter Property="Width" Value="9"/>
+            <Setter Property="Height" Value="9"/>
+        </Style>
     </Window.Resources>
         
         <DockPanel Margin="0,0">
@@ -57,8 +81,8 @@
                 </Border.Style>
             <fa:IconImage Icon="Utensils" Height="40" Width="40" Margin="2" Foreground="#efa42b" VerticalAlignment="Center" HorizontalAlignment="Center"></fa:IconImage>
         </Border>
-            <Border DockPanel.Dock="Top" BorderThickness="0,0,0,2"  BorderBrush="#efa42b">
-                <Grid Height="50"
+        <Border DockPanel.Dock="Top" BorderThickness="0,0,0,2"   BorderBrush="#efa42b">
+                <Grid Height="60"
                    Margin="0,0,0,2"
                    Background="White">
                     <Grid.Style>
@@ -74,7 +98,7 @@
                         </Style>
                     </Grid.Style>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1"></RowDefinition>
+                    <RowDefinition Height="15"></RowDefinition>
                     <RowDefinition Height="1"></RowDefinition>
                     <RowDefinition Height="*"> </RowDefinition>
                 </Grid.RowDefinitions>
@@ -84,8 +108,25 @@
                     <ColumnDefinition Width="auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.ColumnSpan="3" x:Name="pnlControlBar" Grid.Row="0" Orientation="Horizontal" FlowDirection="RightToLeft" Background="Transparent" MouseLeftButtonDown="pnlControlBar_MouseLeftButtonDown">
-                    
+                <StackPanel Grid.RowSpan="1" Grid.ColumnSpan="3" x:Name="pnlControlBar" Grid.Row="0" Orientation="Horizontal" FlowDirection="RightToLeft" Background="Transparent" MouseLeftButtonDown="pnlControlBar_MouseLeftButtonDown" MouseEnter="pnlControlBar_MouseEnter">
+                    <Button x:Name="btnClose"
+                                Style="{StaticResource controlButton}"
+                                Tag="Black"
+                                Click="btnClose_Click">
+                        <fa:IconImage Icon="Xmark" Style="{StaticResource controlButtonIcon}"/>
+                    </Button>
+                    <Button x:Name="btnMaximize"
+                                Style="{StaticResource controlButton}"
+                                Tag="Black"
+                                Click="btnMaximize_Click">
+                        <fa:IconImage Icon="Square" Style="{StaticResource controlButtonIcon}"/>
+                    </Button>
+                    <Button x:Name="btnMinimize"
+                                Style="{StaticResource controlButton}"
+                                Tag="Black"
+                                Click="btnMinimize_Click">
+                        <fa:IconImage Icon="WindowMinimize" Width="12" Style="{StaticResource controlButtonIcon}"/>
+                    </Button>
                 </StackPanel>
                 <Button Background="Transparent" Style="{StaticResource buttonNav}" Margin="20,0,20,0" HorizontalAlignment="Left" Grid.Row="2">
                     <fa:IconImage Icon="Utensils" Foreground="#efa42b" Width="40" Height="40"></fa:IconImage>

@@ -59,9 +59,9 @@
                                     </Grid.RowDefinitions>
 
                                     <Image Source="{Binding Id, Converter={StaticResource converter}}" Stretch="Fill"></Image>
-                                    <TextBlock Text="{Binding Nombre}" FontSize="18" FontWeight="SemiBold" Grid.Row="1" Margin="5,0"></TextBlock>
-                                    <TextBlock Text="{Binding Descripcion}" TextWrapping="Wrap" FontSize="12" FontWeight="Medium" Foreground="Gray" Grid.Row="2" Margin="5,0"></TextBlock>
-                                    <TextBlock Text="{Binding Precio, StringFormat='{}{0:C}'}" Grid.Row="3" FontSize="15" FontWeight="SemiBold" Margin="5,0"></TextBlock>
+                                    <TextBlock Text="{Binding Nombre}" FontSize="18" FontWeight="Medium" Grid.Row="1" Margin="5,0" FontFamily="/Assets/Geologica-VariableFont_CRSV,SHRP,slnt,wght.ttf #Geologica Medium"></TextBlock>
+                                    <TextBlock Text="{Binding Descripcion}" TextWrapping="Wrap" FontSize="12" FontWeight="Medium" Foreground="Gray" Grid.Row="2" Margin="5,0" FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light"></TextBlock>
+                                    <TextBlock Text="{Binding Precio, StringFormat='{}{0:C}'}" Grid.Row="3" FontSize="15" FontWeight="Bold" Margin="5,0" FontFamily="/Assets/Geologica-VariableFont_CRSV,SHRP,slnt,wght.ttf #Geologica Medium"></TextBlock>
                                     <TextBlock HorizontalAlignment="Right" Grid.Row="3" Margin="5"> 
                                         <Hyperlink Command="{Binding Source={x:Reference editarPlatillo}, Path=DataContext.VerEditarMenuCommand}" CommandParameter="{Binding Id}">Editar</Hyperlink>  
                                         <Hyperlink Command="{Binding Source={x:Reference editarPlatillo}, Path=DataContext.VerEliminarMenuCommand}" CommandParameter="{Binding Id}">Eliminar</Hyperlink>
