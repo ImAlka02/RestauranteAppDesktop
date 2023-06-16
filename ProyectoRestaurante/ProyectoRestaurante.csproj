@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\aceptar.png" />
     <None Remove="Assets\agregar.png" />
+    <None Remove="Assets\cancelar.png" />
     <None Remove="Assets\ElBuenGustoLogo.png" />
     <None Remove="Assets\Marmelad-Regular.ttf" />
     <None Remove="Assets\Rubik-Italic-VariableFont_wght.ttf" />
@@ -16,6 +18,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\cancelar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\aceptar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\agregar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

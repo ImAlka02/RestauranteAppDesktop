@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="ProyectoRestaurante.Views.AdminViews.EditarMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProyectoRestaurante.Views.AdminViews"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="30" />
+        </Style>
+    </UserControl.Resources>
+
+    <StackPanel>
+        <Border Background="#efa42b" Padding="10">
+            <TextBlock Text="Editar platillo al Menú" FontSize="18" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" />
+        </Border>
+
+        <StackPanel Margin="30,20" Orientation="Horizontal">
+            <Label Width="200">Nombre del platillo:</Label>
+            <Border BorderThickness="0,0,0,2" BorderBrush="#efa42b" >
+                <TextBox BorderThickness="0" Height="30" Width="500" Text="{Binding Menu.Nombre}"/>
+            </Border>
+        </StackPanel>
+
+        <StackPanel Margin="30,10" Orientation="Horizontal">
+            <Label Width="200">Precio del platillo:</Label>
+            <Border BorderThickness="0,0,0,2" BorderBrush="#efa42b">
+                <TextBox BorderThickness="0" Height="30" Width="500" Text="{Binding Menu.Precio}" />
+            </Border>
+        </StackPanel>
+
+        <StackPanel Margin="30,10" Orientation="Horizontal">
+            <Label Width="200">Descripción:</Label>
+            <Border BorderThickness="0,0,0,2" BorderBrush="#efa42b">
+                <TextBox BorderThickness="0" Height="60" Width="500" Text="{Binding Menu.Descripcion}" TextWrapping="Wrap"/>
+            </Border>
+        </StackPanel>
+
+        <StackPanel Margin="30,10" Orientation="Horizontal">
+            <Label Width="200">Imagén del platillo:</Label>
+            <Border BorderThickness="0,0,0,2" BorderBrush="#efa42b">
+                <TextBox BorderThickness="0" Height="30" Width="500" Text="" />
+                <!--falta bindear la img-->
+            </Border>
+        </StackPanel>
+
+        <TextBlock Margin="30,10" Text="{Binding Error}" Foreground="Red" HorizontalAlignment="Center" />
+
+        <Button Margin="0,30,0,0" Content="Aceptar" Command="{Binding EditarMenuCommand}" Background="#efa42b" Foreground="White" Width="100"
+                FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light" BorderThickness="0"/>
+        <Button Content="Cancelar" Command="{Binding VolverCommand}" FontFamily="/Assets/Rubik-VariableFont_wght.ttf #Rubik Light" 
+                FontSize="12" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Width="100">
+        </Button>
+
+    </StackPanel>
+</UserControl>
