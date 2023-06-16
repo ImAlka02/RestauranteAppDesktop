@@ -136,7 +136,7 @@ namespace ProyectoRestaurante.ViewModels
         [Authorize(Roles = "Cliente")]
         private void AccionesUsuarioCliente()
         {
-            Vista = new MenuView();
+            Vista = new PrincipalClienteView();
         }
 
         [Authorize(Roles = "Administrador")]

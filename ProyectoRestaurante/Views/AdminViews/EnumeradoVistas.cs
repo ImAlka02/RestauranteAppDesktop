@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProyectoRestaurante.Views
+namespace ProyectoRestaurante.Views.AdminViews
 {
     public enum Accion
     {
@@ -13,4 +13,5 @@ namespace ProyectoRestaurante.Views
         AgregarPlatillo,
         EliminarPlatillo
     }
+
 }

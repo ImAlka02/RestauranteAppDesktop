@@ -5,9 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              xmlns:local="clr-namespace:ProyectoRestaurante.Views.AdminViews"
-             xmlns:viewMenu="clr-namespace:ProyectoRestaurante.Views.ClienteView"
+             xmlns:viewMenu="clr-namespace:ProyectoRestaurante.Views.ClienteView" xmlns:vm="clr-namespace:ProyectoRestaurante.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <vm:MenuViewModel></vm:MenuViewModel>
+    </UserControl.DataContext>
     <UserControl.Resources>
         <Style TargetType="Button">
             <Setter Property="Padding" Value="0"/>
@@ -45,6 +48,8 @@
 
 
         <viewMenu:MenuView x:Key="VerMenu"></viewMenu:MenuView>
+        <local:UsuariosView x:Key="VerUsuarios"></local:UsuariosView>
+        <local:AgregarMenu x:Key="AgregarPlatillo"></local:AgregarMenu>
     </UserControl.Resources>
     <DockPanel>
         <Grid Width="40"
@@ -64,11 +69,12 @@
             <Button Background="Transparent" Grid.Row="1" Padding="0" BorderThickness="0" Margin="0" VerticalAlignment="Bottom" Command="{Binding NavegarUsuariosCommand}">
                 <fa:IconImage Icon="Users" Foreground="#efa42b" Width="30" Height="30" Margin="0,10" VerticalAlignment="Bottom"></fa:IconImage>
             </Button>
-            <Button Background="Transparent" Grid.Row="2" Padding="0" BorderThickness="0" Margin="0" VerticalAlignment="Bottom" Command="{Binding NavegarUsuariosCommand}">
+            
+            <Button Background="Transparent" Grid.Row="2" Padding="0" BorderThickness="0" Margin="0" VerticalAlignment="Bottom" Command="{Binding VerRegistrarMenuCommand}">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Operacion}" Value="VerMenu">
+                            <DataTrigger Binding="{Binding Operacion}" Value="{x:Static local:Accion.VerUsuarios}">
                                 <Setter Property="Visibility" Value="Collapsed">
                                     
                                 </Setter>
@@ -78,13 +84,33 @@
                 </Button.Style>
             <fa:IconImage Icon="Add" Foreground="#efa42b" Width="30" Height="30" Margin="0,10" VerticalAlignment="Bottom"></fa:IconImage>
             </Button>
+            
+            <Button Background="Transparent" Grid.Row="3" Padding="0" BorderThickness="0" Margin="0" VerticalAlignment="Bottom">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Operacion}" Value="{x:Static local:Accion.VerMenu}">
+                                <Setter Property="Visibility" Value="Collapsed">
+
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <fa:IconImage Icon="UserPlus" Foreground="#efa42b" Width="30" Height="30" Margin="0,10" VerticalAlignment="Bottom"></fa:IconImage>
+            </Button>
         </Grid>
         <ContentControl >
             <ContentControl.Style>
                 <Style TargetType="ContentControl">
                     <Setter Property="Content" Value="{StaticResource VerMenu}"></Setter>
                     <Style.Triggers>
-                        
+                        <DataTrigger Binding="{Binding Operacion}" Value="{x:Static local:Accion.VerUsuarios}" >
+                            <Setter Property="Content" Value="{StaticResource VerUsuarios}"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Operacion}" Value="{x:Static local:Accion.AgregarPlatillo}" >
+                            <Setter Property="Content" Value="{StaticResource AgregarPlatillo}"></Setter>
+                        </DataTrigger>
                     </Style.Triggers>
                 </Style>
                 

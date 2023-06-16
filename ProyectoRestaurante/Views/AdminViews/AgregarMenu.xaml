@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProyectoRestaurante.Views.AdminViews"
+             xmlns:imgConv="clr-namespace:ProyectoRestaurante.Helpers"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -18,6 +19,7 @@
             <Setter Property="Width" Value="100" />
             <Setter Property="Height" Value="30" />
         </Style>
+        <imgConv:IdAmigoToImageConverter x:Key="convertir"></imgConv:IdAmigoToImageConverter>
     </UserControl.Resources>
 
     <StackPanel>
@@ -31,6 +33,7 @@
                 <TextBox BorderThickness="0" Height="30" Width="500" Text="{Binding Menu.Nombre}"/>
             </Border>
         </StackPanel>
+        
 
         <StackPanel Margin="30,10" Orientation="Horizontal">
             <Label Width="200">Precio del platillo:</Label>
@@ -49,11 +52,11 @@
         <StackPanel Margin="30,10" Orientation="Horizontal">
             <Label Width="200">Imagén del platillo:</Label>
             <Border BorderThickness="0,0,0,2" BorderBrush="#efa42b">
-                <TextBox BorderThickness="0" Height="30" Width="500" Text="" />
-                <!--falta bindear la img-->
+                <TextBox BorderThickness="0" Height="30" Width="500" Text="{Binding Imagen, UpdateSourceTrigger=PropertyChanged}" Name="txtImagen" />
             </Border>
+            <Button Click="Button_Click"></Button>
         </StackPanel>
-
+        <Image  Height="100" Width="100" Source="{Binding Imagen, Converter={StaticResource ResourceKey=convertir}}"></Image>
         <TextBlock Margin="30,10" Text="{Binding Error}" Foreground="Red" HorizontalAlignment="Center" />
 
         <Button Margin="0,30,0,0" Content="Agregar" Command="{Binding RegistrarMenuCommand}" Background="#efa42b" Foreground="White" Width="100"
